@@ -30,7 +30,13 @@ const Box = styled.div`
   align-items: center;
   animation: ${animation} 2s linear infinite;
   span {
-    font-size: 70px;
+    font-size: 20px;
+    &:hover {
+      font-size: 200px;
+    }
+    &:active {
+      opacity: 0;
+    }
   }
 `;
 
