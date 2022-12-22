@@ -14,11 +14,15 @@ const Text = styled.h1`
   color: black;
 `;
 
+const Circle = styled(Box)`
+  border-radius: 50px;
+`;
+
 function App() {
   return (
     <Father>
       <Box bgColor='teal' />
-      <Box bgColor='tomato' />
+      <Circle bgColor='tomato' />
     </Father>
   );
 }
