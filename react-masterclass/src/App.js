@@ -25,13 +25,21 @@ const Box = styled.div`
   height: 200px;
   width: 200px;
   background-color: tomato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: ${animation} 2s linear infinite;
+  span {
+    font-size: 70px;
+  }
 `;
 
 function App() {
   return (
     <Wrapper>
-      <Box />
+      <Box>
+        <span>🤩</span>
+      </Box>
     </Wrapper>
   );
 }
