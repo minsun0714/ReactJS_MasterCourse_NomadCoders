@@ -32,4 +32,5 @@ const sayHello = (playerObj: PlayerShape) =>
   `Hello ${playerObj.name} you are ${playerObj.age} old.`;
 
 sayHello({ name: "nico", age: 12 });
-sayHello({ name: "nico", age: 12, Hello: 1 });
+sayHello({ name: "nico", age: 12, Hello: 11 });
+//Hello가 PlayerShape type에 없어서 오류남.
