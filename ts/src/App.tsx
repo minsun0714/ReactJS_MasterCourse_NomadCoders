@@ -1,11 +1,12 @@
 import styled, { keyframes } from "styled-components";
-import Circle from "./Circle";
 
 function App() {
   return (
     <div>
-      <Circle borderColor='yellow' bgColor='teal' />
-      <Circle text="I'm here" bgColor='tomato' />
+      <form>
+        <input type='text' placeholder='username' />
+        <button>Log in</button>
+      </form>
     </div>
   );
 }
