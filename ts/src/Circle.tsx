@@ -20,3 +20,16 @@ function Circle({ bgColor }: CircleProps) {
 }
 
 export default Circle;
+
+//----------example------------
+
+interface PlayerShape {
+  name: string;
+  age: number;
+}
+
+const sayHello = (playerObj: PlayerShape) =>
+  `Hello ${playerObj.name} you are ${playerObj.age} old.`;
+
+sayHello({ name: "nico", age: 12 });
+sayHello({ name: "nico", age: 12, Hello: 1 });
