@@ -13,6 +13,7 @@ const Container = styled.div<ContainerProps>`
 
 interface CircleProps {
   bgColor: string;
+  borderColor?: string;
 }
 
 function Circle({ bgColor }: CircleProps) {
@@ -20,17 +21,3 @@ function Circle({ bgColor }: CircleProps) {
 }
 
 export default Circle;
-
-//----------example------------
-
-interface PlayerShape {
-  name: string;
-  age: number;
-}
-
-const sayHello = (playerObj: PlayerShape) =>
-  `Hello ${playerObj.name} you are ${playerObj.age} old.`;
-
-sayHello({ name: "nico", age: 12 });
-sayHello({ name: "nico", age: 12, Hello: 11 });
-//Hello가 PlayerShape type에 없어서 오류남.
