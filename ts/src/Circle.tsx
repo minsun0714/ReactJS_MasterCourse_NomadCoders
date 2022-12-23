@@ -1,4 +1,3 @@
-import { StringifyOptions } from "querystring";
 import styled from "styled-components";
 
 interface ContainerProps {
