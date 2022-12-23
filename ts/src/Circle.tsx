@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 const Container = styled.div``;
 
-function Circle({ bgColor }) {
+interface CircleProps {
+  bgColor: string;
+}
+
+function Circle({ bgColor }: CircleProps) {
   return <Container />;
 }
 
