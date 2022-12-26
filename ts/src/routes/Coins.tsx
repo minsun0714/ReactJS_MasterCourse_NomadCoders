@@ -76,7 +76,7 @@ function Coins() {
   return (
     <Container>
       <Header>
-        <Title>어여쁜 코인들</Title>
+        <Title>코인들</Title>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
