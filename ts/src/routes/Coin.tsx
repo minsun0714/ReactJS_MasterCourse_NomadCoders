@@ -139,24 +139,10 @@ function Coin() {
   const { coinId } = useParams<RouterParams>();
   const { state } = useLocation<RouteState>();
   const [info, setInfo] = useState<InfoData>();
-  const [priceInfo, setPriceInfo] = useState<PriceData>();
+  const [priceInfo, setpriceInfo] = useState<PriceData>();
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
-  console.log(priceMatch);
-  console.log(chartMatch);
-  useEffect(() => {
-    (async () => {
-      const infoData = await (
-        await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
-      ).json();
-      const priceData = await (
-        await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
-      ).json();
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-  }, [coinId]);
+
   return (
     <Container>
       <Header>
@@ -164,7 +150,6 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : info?.name}
         </Title>
       </Header>
-      {loading ? <Loader>Loading...</Loader> : null}
       {loading ? (
         <Loader>Loading...</Loader>
       ) : (
