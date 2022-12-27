@@ -104,6 +104,7 @@ function Coin() {
       ).json();
       setInfo(infoData);
       setPriceInfo(priceData);
+      setLoading(false);
     })();
   }, []);
   return (
