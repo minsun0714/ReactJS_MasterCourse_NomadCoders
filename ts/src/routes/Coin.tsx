@@ -3,7 +3,7 @@ import { Switch, Route, useParams, useLocation } from "react-router";
 import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "./api";
-import Chart from "./Chart";
+import Chart_Candlestick from "./Chart_Candlestick";
 import Price from "./Price";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
@@ -222,7 +222,7 @@ function Coin() {
               <Price />
             </Route>
             <Route path={`/${coinId}/chart`}>
-              <Chart coinId={coinId} />
+              <Chart_Candlestick coinId={coinId} />
             </Route>
           </Switch>
         </>
