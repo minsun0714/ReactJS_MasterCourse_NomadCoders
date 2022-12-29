@@ -144,11 +144,9 @@ interface PriceData {
   };
 }
 
-interface ICoinsProps {
-  isDark: boolean;
-}
+interface ICoinsProps {}
 
-function Coin({ isDark }: ICoinsProps) {
+function Coin({}: ICoinsProps) {
   const { coinId } = useParams<RouterParams>();
   const { state } = useLocation<RouteState>();
   const [info, setInfo] = useState<InfoData>();
@@ -163,7 +161,7 @@ function Coin({ isDark }: ICoinsProps) {
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
-      refetchInterval: 10000,
+      refetchInterval: 1000000,
     }
   );
   const loading = infoLoading || tickersLoading;
@@ -226,7 +224,7 @@ function Coin({ isDark }: ICoinsProps) {
               <Price />
             </Route>
             <Route path={`/${coinId}/chart`}>
-              <Chart_Candlestick isDark={isDark} coinId={coinId} />
+              <Chart_Candlestick coinId={coinId} />
             </Route>
           </Switch>
         </>

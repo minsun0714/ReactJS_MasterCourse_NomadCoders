@@ -64,11 +64,9 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
-interface ICoinsProps {
-  toggleDark: () => void;
-}
+interface ICoinsProps {}
 
-function Coins({ toggleDark }: ICoinsProps) {
+function Coins({}: ICoinsProps) {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
   return (
     <Container>
@@ -79,7 +77,7 @@ function Coins({ toggleDark }: ICoinsProps) {
       </HelmetProvider>
       <Header>
         <Title>코인들</Title>
-        <button onClick={toggleDark}>Toggle Dark Mode</button>
+        <button>Toggle Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
