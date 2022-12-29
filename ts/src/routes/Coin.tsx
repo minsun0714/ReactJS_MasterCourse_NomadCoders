@@ -8,6 +8,13 @@ import Price from "./Price";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
 
+const Back = styled.button`
+  color: ${(props) => props.theme.accentColor};
+  background-color: ${(props) => props.theme.bgColor};
+  text-align: left;
+  height: 5vh;
+`;
+
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
@@ -163,6 +170,9 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
+      <Back>
+        <Link to={`/`}>Home</Link>
+      </Back>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
