@@ -144,7 +144,11 @@ interface PriceData {
   };
 }
 
-function Coin() {
+interface ICoinsProps {
+  isDark: boolean;
+}
+
+function Coin({ isDark }: ICoinsProps) {
   const { coinId } = useParams<RouterParams>();
   const { state } = useLocation<RouteState>();
   const [info, setInfo] = useState<InfoData>();
@@ -222,7 +226,7 @@ function Coin() {
               <Price />
             </Route>
             <Route path={`/${coinId}/chart`}>
-              <Chart_Candlestick coinId={coinId} />
+              <Chart_Candlestick isDark={isDark} coinId={coinId} />
             </Route>
           </Switch>
         </>
