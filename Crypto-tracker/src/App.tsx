@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 const GlobalStyle = createGlobalStyle`
@@ -68,9 +70,11 @@ a {
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Router />;
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <Router />;
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }
