@@ -1,11 +1,17 @@
 import styled, { keyframes } from "styled-components";
 
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
+
 const Wrapper = styled.div`
   display: flex;
   height: 100vh;
   width: 100vw;
+  margin: 0;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const rotation = keyframes`
@@ -22,7 +28,7 @@ const rotation = keyframes`
     100% {
       transform:rotate(0deg);
       border-radius: 0px;
-      background-color: green;
+      background-color: skyblue;
     }
 `;
 
@@ -52,6 +58,7 @@ const Box = styled.div`
 function App() {
   return (
     <Wrapper>
+      <Title>우주에 오신 것을 환영쓰</Title>
       <Box>
         <Emoji as='p'>🪐</Emoji>
       </Box>
