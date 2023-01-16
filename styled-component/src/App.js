@@ -1,21 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
-const Input = styled.input.attrs({ required: true, maxLength: 10 })`
+const Box = styled.div`
+  width: 200px;
+  height: 200px;
   background-color: tomato;
-  width: 90px;
 `;
 
 function App() {
   return (
-    <Father as='header'>
-      <Input />
-      <Input />
-      <Input />
-    </Father>
+    <Wrapper>
+      <Box />
+    </Wrapper>
   );
 }
 
