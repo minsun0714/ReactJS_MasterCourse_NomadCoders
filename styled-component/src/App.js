@@ -31,7 +31,13 @@ const Box = styled.div`
   align-items: center;
   animation: ${rotation} 1s linear infinite;
   span {
-    font-size: 100px;
+    font-size: 50px;
+    &:hover {
+      font-size: 200px;
+    }
+    &:active {
+      opacity: 0;
+    }
   }
 `;
 
@@ -39,7 +45,7 @@ function App() {
   return (
     <Wrapper>
       <Box>
-        <span>🤩</span>
+        <span>🪐</span>
       </Box>
     </Wrapper>
   );
