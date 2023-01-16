@@ -2,6 +2,10 @@ import styled, { keyframes } from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
 `;
 
 const rotation = keyframes`
@@ -22,6 +26,10 @@ const rotation = keyframes`
     }
 `;
 
+const Emoji = styled.span`
+  font-size: 75px;
+`;
+
 const Box = styled.div`
   width: 200px;
   height: 200px;
@@ -30,7 +38,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   animation: ${rotation} 1s linear infinite;
-  span {
+  ${Emoji} {
     font-size: 50px;
     &:hover {
       font-size: 200px;
@@ -45,8 +53,9 @@ function App() {
   return (
     <Wrapper>
       <Box>
-        <span>🪐</span>
+        <Emoji as='p'>🪐</Emoji>
       </Box>
+      <Emoji as='p'>🪐</Emoji>
     </Wrapper>
   );
 }
