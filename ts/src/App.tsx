@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
-const Title = styled.h1`
-  color: ${(prop) => prop.theme.textColor};
-`;
+import Circle from "./Circle";
 
 function App() {
-  return <Title>hi</Title>;
+  return (
+    <div>
+      <Circle bgColor='yellow' borderColor='red' />
+      <Circle bgColor='' />
+    </div>
+  );
 }
 
 export default App;
