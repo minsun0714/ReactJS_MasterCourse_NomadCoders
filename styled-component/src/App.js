@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import style from "./App.module.css";
 
 const Title = styled.h1`
   color: ${(props) => props.theme.textColor};
