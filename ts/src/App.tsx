@@ -29,7 +29,6 @@ function Dummy({ text = "안녕하시렵니까", active = false }: DummyProps) {
 }
 
 function App() {
-  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {};
   const [value, setValue] = useState("");
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -44,7 +43,6 @@ function App() {
   return (
     <Wrapper>
       <Dummy active={true} text='Minsun' />
-      <button onClick={onclick}>click me</button>
       <Button bgColor='violet' />
       <Circle bgColor='yellow' />
       <Circle bgColor='tomato' text='hihi' />
