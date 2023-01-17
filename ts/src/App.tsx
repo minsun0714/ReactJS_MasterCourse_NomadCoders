@@ -3,6 +3,10 @@ import styled from "styled-components";
 import Circle from "./Circle";
 import Button from "./Button";
 
+const Wrapper = styled.div`
+  background-color: ${(prop) => prop.theme.bgColor};
+`;
+
 function App() {
   const [value, setValue] = useState("");
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -16,7 +20,7 @@ function App() {
     setValue("");
   };
   return (
-    <div>
+    <Wrapper>
       <Button bgColor='violet' />
       <Circle bgColor='yellow' />
       <Circle bgColor='tomato' text='hihi' />
@@ -29,7 +33,7 @@ function App() {
         ></input>
         <button>Log in</button>
       </form>
-    </div>
+    </Wrapper>
   );
 }
 

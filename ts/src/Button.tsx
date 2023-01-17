@@ -8,8 +8,9 @@ interface Buttonprops {
 const Button = styled.button<Buttonprops>`
   width: 100px;
   height: 50px;
-  background-color: ${(prop) => prop.bgColor};
+  background-color: ${(prop) => prop.theme.btnColor};
   border: 0px;
+  color: ${(prop) => prop.theme.textColor};
 `;
 
 interface Btnprops {
