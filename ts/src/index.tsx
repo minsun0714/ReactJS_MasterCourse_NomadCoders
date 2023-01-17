@@ -4,7 +4,7 @@ import App from "./App";
 import { ThemeProvider } from "styled-components";
 
 const lightTheme = {
-  textColor: "#111",
+  textColor: "blue",
   backgroundColor: "whitesmoke",
 };
 
