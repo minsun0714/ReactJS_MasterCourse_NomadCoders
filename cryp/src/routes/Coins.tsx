@@ -53,7 +53,7 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
-  color: black;
+  color: ${(props) => props.theme.accentColor};
   font-size: 48px;
 `;
 

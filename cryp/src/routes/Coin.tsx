@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
-import { useParams, useLocation } from "react-router";
+import { useParams, useLocation, useRouteMatch } from "react-router";
 import styled from "styled-components";
 import { useState } from "react";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import Chart from "./Chart";
+import Price from "./Price";
 
 const Title = styled.h1`
-  color: black;
+  color: ${(props) => props.theme.accentColor};
   font-size: 48px;
 `;
 
@@ -40,7 +43,7 @@ const Overview = styled.div`
   padding: 10px 20px;
   border-radius: 10px;
 `;
-const OverviewItem = styled.div`
+const OverviewItem = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,6 +52,7 @@ const OverviewItem = styled.div`
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 5px;
+    color: ${(props) => props.theme.accentColor};
   }
 `;
 
@@ -56,6 +60,24 @@ const Description = styled.p`
   margin: 20px 0px;
   color: whitesmoke;
   text-align: center;
+`;
+
+const Tabs = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 10px 0px;
+  gap: 3px;
+  height: 10px;
+`;
+
+const Tab = styled.span`
+  text-align: center;
+  text-transform: uppercase;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: block;
+  color: ${(props) => props.theme.accentColor};
 `;
 
 interface RouteParams {
@@ -180,6 +202,26 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
+          <Tabs>
+            <Link to={`/${coinId}/chart`}>
+              <Tab>
+                <span>chart</span>
+              </Tab>
+            </Link>
+            <Link to={`/${coinId}/price`}>
+              <Tab>
+                <span>price</span>
+              </Tab>
+            </Link>
+          </Tabs>
+          <Switch>
+            <Route path='/:coinId/price'>
+              <Price />
+            </Route>
+            <Route path='/:coinId/chart'>
+              <Chart />
+            </Route>
+          </Switch>
         </>
       )}
     </Container>
