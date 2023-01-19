@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 
+const Img = styled.img`
+  height: 30px;
+  margin-right: 20px;
+`;
+
 const Loading = styled.h1`
   margin-top: 50px;
   font-size: 50px;
@@ -24,6 +29,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
 const CoinsList = styled.ul`
@@ -36,6 +42,9 @@ const Coin = styled.li`
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 15px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
   &:hover {
     color: ${(props) => props.theme.accentColor};
     background-color: white;
@@ -81,8 +90,13 @@ function Coins() {
       ) : (
         <CoinsList>
           {coins.map((coin) => (
-            <Link to={`/${coin.id}`}>
-              <Coin key={coin.id}>{coin.name} &rarr;</Coin>
+            <Link to={`/${coin.id}`} key={coin.id}>
+              <Coin>
+                <Img
+                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                ></Img>
+                {coin.name} &rarr;
+              </Coin>
             </Link>
           ))}
         </CoinsList>
