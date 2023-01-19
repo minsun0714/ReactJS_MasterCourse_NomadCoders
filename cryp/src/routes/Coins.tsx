@@ -3,10 +3,15 @@ import React from "react";
 
 const Container = styled.div`
   color: ${(props) => props.theme.bgColor};
+  padding: 20px 20px;
 `;
 
 const Header = styled.header`
   color: ${(props) => props.theme.bgColor};
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CoinsList = styled.ul`
@@ -14,11 +19,16 @@ const CoinsList = styled.ul`
 `;
 
 const Coin = styled.li`
-  color: ${(props) => props.theme.accentColor};
+  color: ${(props) => props.theme.bgColor};
+  background-color: whitesmoke;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
 `;
 
 const Title = styled.h1`
   color: black;
+  font-size: 48px;
 `;
 
 const coins = [
@@ -55,12 +65,12 @@ function Coins() {
   return (
     <Container>
       <Header>
-        <Title>Coins~!~!~!</Title>
+        <Title>Coins</Title>
       </Header>
       <CoinsList>
-        <Coin>Coin1</Coin>
-        <Coin>Coin2</Coin>
-        <Coin>Coin3</Coin>
+        {coins.map((coin) => (
+          <Coin key={coin.id}>{coin.name} &rarr;</Coin>
+        ))}
       </CoinsList>
     </Container>
   );
