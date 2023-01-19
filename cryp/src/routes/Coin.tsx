@@ -70,14 +70,16 @@ const Tabs = styled.div`
   height: 10px;
 `;
 
-const Tab = styled.span`
+const Tab = styled.span<{ isActive: boolean }>`
   text-align: center;
   text-transform: uppercase;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   border-radius: 10px;
   display: block;
-  color: ${(props) => props.theme.accentColor};
+  color: ${(props) =>
+    props.isActive ? props.theme.accentColor : props.theme.bgColor};
+  /* transition: color 0.05s ease-in; */
 `;
 
 interface RouteParams {
@@ -150,6 +152,10 @@ function Coin() {
   const { state } = useLocation<RouteState>();
   const [info, setInfo] = useState<InfoData>();
   const [priceInfo, setPriceInfo] = useState<PriceInfoData>();
+  const priceMatch = useRouteMatch("/:coinId/price");
+  const chartMatch = useRouteMatch("/:coinId/chart");
+
+  console.log(priceMatch);
   useEffect(() => {
     (async () => {
       const infoData = await (
@@ -204,12 +210,12 @@ function Coin() {
           </Overview>
           <Tabs>
             <Link to={`/${coinId}/chart`}>
-              <Tab>
+              <Tab isActive={chartMatch !== null}>
                 <span>chart</span>
               </Tab>
             </Link>
             <Link to={`/${coinId}/price`}>
-              <Tab>
+              <Tab isActive={priceMatch !== null}>
                 <span>price</span>
               </Tab>
             </Link>
