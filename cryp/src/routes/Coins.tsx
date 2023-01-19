@@ -90,7 +90,13 @@ function Coins() {
       ) : (
         <CoinsList>
           {coins.map((coin) => (
-            <Link to={`/${coin.id}`} key={coin.id}>
+            <Link
+              to={{
+                pathname: `/${coin.id}`,
+                state: { name: coin.name },
+              }}
+              key={coin.id}
+            >
               <Coin>
                 <Img
                   src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
