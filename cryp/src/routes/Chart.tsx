@@ -1,8 +1,8 @@
+import ApexChart from "react-apexcharts";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinHistory } from "./api";
-import ApexChart from "react-apexcharts";
 
 interface IOlhcv {
   time_open: string;
@@ -29,60 +29,52 @@ function Chart({ coinId }: RouteParams) {
         "Loading chart..."
       ) : (
         <ApexChart
-          type='line'
+          type='candlestick'
           series={[
             {
-              name: "high",
-              data: data?.map((price) => price.high) ?? [],
-            },
-            {
-              name: "close",
-              data: data?.map((price) => price.close) ?? [],
+              name: "price",
+              data: [
+                {
+                  x: data?.[0].time_close.substring(0, 10),
+                  y: [
+                    data?.[0].open,
+                    data?.[0].high,
+                    data?.[0].low,
+                    data?.[0].close,
+                  ],
+                },
+                {
+                  x: data?.[1].time_close.substring(0, 10),
+                  y: [
+                    data?.[1].open,
+                    data?.[1].high,
+                    data?.[1].low,
+                    data?.[1].close,
+                  ],
+                },
+              ] as any[],
             },
           ]}
           options={{
-            theme: {
-              mode: "dark",
-            },
+            theme: { mode: "dark" },
             chart: {
-              toolbar: {
-                show: false,
-              },
+              // toolbar: { show: false },
               background: "transparent",
             },
-            stroke: {
-              curve: "smooth",
-              width: 5,
-            },
+            grid: { show: true },
             xaxis: {
-              labels: {
-                show: false,
-              },
-              type: "datetime",
-              categories: data?.map(
-                (price) => new Date(Number(price.time_close))
-              ),
+              labels: { show: true },
             },
-            yaxis: {
-              show: false,
-            },
-            grid: {
-              show: true,
-            },
-            tooltip: {
-              x: {
-                show: false,
-              },
-              y: {
-                formatter: (v) => {
-                  return "$" + v.toFixed(2);
-                },
-              },
-            },
+            yaxis: { show: true, decimalsInFloat: 2 },
+            // fill: {
+            //   type: "gradient",
+            //   gradient: { gradientToColors: ["#55E6C1"], stops: [0, 1000] },
+            // },
           }}
         />
       )}
     </div>
   );
 }
+
 export default Chart;
