@@ -58,12 +58,26 @@ function Chart({ coinId }: RouteParams) {
               labels: {
                 show: false,
               },
+              type: "datetime",
+              categories: data?.map(
+                (price) => new Date(Number(price.time_close))
+              ),
             },
             yaxis: {
               show: false,
             },
             grid: {
               show: true,
+            },
+            tooltip: {
+              x: {
+                show: false,
+              },
+              y: {
+                formatter: (v) => {
+                  return "$" + v.toFixed(2);
+                },
+              },
             },
           }}
         />
