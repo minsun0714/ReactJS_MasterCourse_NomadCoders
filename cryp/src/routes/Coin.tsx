@@ -87,7 +87,8 @@ const Tab = styled.span<{ isActive: boolean }>`
 `;
 
 const Back = styled.div`
-  color: black;
+  color: gray;
+  margin-left: 0px;
 `;
 
 interface RouteParams {
@@ -174,6 +175,9 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
+      <Link to={`/`}>
+        <Back>Coins</Back>
+      </Link>
       <Helmet>
         <title>
           {" "}
