@@ -58,7 +58,7 @@ function Chart({ coinId }: RouteParams) {
           options={{
             theme: { mode: "dark" },
             chart: {
-              // toolbar: { show: false },
+              toolbar: { show: false },
               background: "transparent",
             },
             grid: { show: true },
