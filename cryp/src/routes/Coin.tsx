@@ -70,6 +70,7 @@ const Tabs = styled.div`
   margin: 10px 0px;
   gap: 3px;
   height: 10px;
+  margin-bottom: 40px;
 `;
 
 const Tab = styled.span<{ isActive: boolean }>`

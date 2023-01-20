@@ -2,10 +2,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinHistory } from "./api";
-
-const Pcolor = styled.div`
-  color: black;
-`;
+import ApexChart from "react-apexcharts";
 
 interface IOlhcv {
   time_open: string;
@@ -26,6 +23,52 @@ function Chart({ coinId }: RouteParams) {
   const { isLoading, data } = useQuery<IOlhcv[]>(["olhcv", coinId], () =>
     fetchCoinHistory(coinId)
   );
-  return <Pcolor>Chart</Pcolor>;
+  return (
+    <div>
+      {isLoading ? (
+        "Loading chart..."
+      ) : (
+        <ApexChart
+          type='line'
+          series={[
+            {
+              name: "high",
+              data: data?.map((price) => price.high) ?? [],
+            },
+            {
+              name: "close",
+              data: data?.map((price) => price.close) ?? [],
+            },
+          ]}
+          options={{
+            theme: {
+              mode: "dark",
+            },
+            chart: {
+              toolbar: {
+                show: false,
+              },
+              background: "transparent",
+            },
+            stroke: {
+              curve: "smooth",
+              width: 5,
+            },
+            xaxis: {
+              labels: {
+                show: false,
+              },
+            },
+            yaxis: {
+              show: false,
+            },
+            grid: {
+              show: true,
+            },
+          }}
+        />
+      )}
+    </div>
+  );
 }
 export default Chart;
