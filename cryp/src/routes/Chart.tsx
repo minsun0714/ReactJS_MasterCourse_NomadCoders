@@ -17,10 +17,9 @@ interface IOlhcv {
 
 interface RouteParams {
   coinId: string;
-  isDark: boolean;
 }
 
-function Chart({ coinId, isDark }: RouteParams) {
+function Chart({ coinId }: RouteParams) {
   const { isLoading, data } = useQuery<IOlhcv[]>(["olhcv", coinId], () =>
     fetchCoinHistory(coinId)
   );
@@ -57,7 +56,7 @@ function Chart({ coinId, isDark }: RouteParams) {
             },
           ]}
           options={{
-            theme: { mode: isDark ? "light" : "dark" },
+            theme: { mode: "light" },
             chart: {
               toolbar: { show: false },
               background: "transparent",
