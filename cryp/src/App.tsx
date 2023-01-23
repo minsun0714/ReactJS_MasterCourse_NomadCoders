@@ -91,7 +91,7 @@ function App() {
           <Btn onClick={toggleDark}>{isDark ? "💖👆🏻" : "🤍👆🏻"}</Btn>
         </BtnWrapper>
         <GlobalStyle />
-        <Router />
+        <Router toggleDark={toggleDark} isDark={isDark} />
         <ReactQueryDevtools initialIsOpen={true} />
       </ThemeProvider>
     </>
