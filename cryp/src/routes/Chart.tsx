@@ -1,7 +1,7 @@
 import ApexChart from "react-apexcharts";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoinHistory } from "./api";
 import { isDarkAtom } from "./atom";
