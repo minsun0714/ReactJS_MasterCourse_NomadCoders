@@ -1,6 +1,22 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import Router from "./Router";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme";
+import { useState } from "react";
+
+const Btn = styled.button`
+  background-color: ${(props) => props.theme.bgColor};
+  border: none;
+  font-size: 20px;
+`;
+
+const BtnWrapper = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: right;
+`;
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300&family=PT+Sans&family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -66,11 +82,18 @@ a{
 `;
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleDark = () => setIsDark((current) => !current);
   return (
     <>
-      <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <BtnWrapper>
+          <Btn onClick={toggleDark}>{isDark ? "💖👆🏻" : "🤍👆🏻"}</Btn>
+        </BtnWrapper>
+        <GlobalStyle />
+        <Router />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </ThemeProvider>
     </>
   );
 }

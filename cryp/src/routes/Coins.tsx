@@ -40,7 +40,7 @@ const CoinsList = styled.ul`
 `;
 
 const Coin = styled.li`
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.bgColor};
   background-color: whitesmoke;
   padding: 20px;
   margin-bottom: 20px;
