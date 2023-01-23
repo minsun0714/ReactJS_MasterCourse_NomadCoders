@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
 import { useParams, useLocation, useRouteMatch } from "react-router";
 import styled from "styled-components";
-import { useState } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import Chart from "./Chart";
 import Price from "./Price";
 import { useQuery } from "react-query";
