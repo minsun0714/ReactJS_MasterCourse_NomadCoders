@@ -35,6 +35,7 @@ interface IFormData {
   userName: string;
   password: string;
   pwConfirmation: string;
+  extraError?: string;
 }
 
 function ToDoList() {
@@ -42,13 +43,23 @@ function ToDoList() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<IFormData>({
     defaultValues: {
       Email: "@naver.com",
     },
   });
   const onValid = (data: IFormData) => {
-    console.log(data);
+    if (data.password !== data.pwConfirmation) {
+      return setError("pwConfirmation", {
+        message: "password and pwConfirmation are different",
+      });
+    }
+    setError(
+      "extraError",
+      { message: "Server offline." },
+      { shouldFocus: true }
+    );
   };
   console.log(errors);
   return (
@@ -103,6 +114,7 @@ function ToDoList() {
         />{" "}
         <span>{errors?.pwConfirmation?.message}</span>
         <button>Add</button>
+        <span>{errors?.extraError?.message}</span>
       </form>
     </div>
   );
