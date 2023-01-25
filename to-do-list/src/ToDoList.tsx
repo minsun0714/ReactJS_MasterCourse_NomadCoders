@@ -55,11 +55,11 @@ function ToDoList() {
         message: "password and pwConfirmation are different",
       });
     }
-    setError(
-      "extraError",
-      { message: "Server offline." },
-      { shouldFocus: true }
-    );
+    // setError(
+    //   "extraError",
+    //   { message: "Server offline." },
+    //   { shouldFocus: true }
+    // );
   };
   console.log(errors);
   return (
@@ -96,9 +96,9 @@ function ToDoList() {
             required: "Write your user name",
             minLength: { value: 10, message: "username is too short" },
             validate: {
-              noJasmine: (value) =>
+              noJasmine: (value: string) =>
                 value.includes("jasmine") ? "no jasmine allowed" : true,
-              noNico: (value) =>
+              noNico: (value: string) =>
                 value.includes("nico") ? "no nico allowed" : true,
             },
           })}
