@@ -80,7 +80,9 @@ function ToDoList() {
         />{" "}
         <span>{errors?.Email?.message}</span>
         <input
-          {...register("firstName", { required: "Write your first name" })}
+          {...register("firstName", {
+            required: "Write your first name",
+          })}
           placeholder='firstName'
         />{" "}
         <span>{errors?.firstName?.message}</span>
@@ -93,6 +95,12 @@ function ToDoList() {
           {...register("userName", {
             required: "Write your user name",
             minLength: { value: 10, message: "username is too short" },
+            validate: {
+              noJasmine: (value) =>
+                value.includes("jasmine") ? "no jasmine allowed" : true,
+              noNico: (value) =>
+                value.includes("nico") ? "no nico allowed" : true,
+            },
           })}
           placeholder='userName'
         />{" "}
