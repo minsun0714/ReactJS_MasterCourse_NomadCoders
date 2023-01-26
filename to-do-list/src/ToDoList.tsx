@@ -1,5 +1,17 @@
 import { useForm } from "react-hook-form";
+import { atom, useRecoilState } from "recoil";
 import styled from "styled-components";
+
+interface IToDo {
+  text: string;
+  id: number;
+  category: "TO_DO" | "DOING" | "DONE";
+}
+
+const toDoState = atom<IToDo[]>({
+  key: "toDo",
+  default: [],
+});
 
 const TitleWrapper = styled.div`
   display: flex;
@@ -13,11 +25,22 @@ const H1 = styled.h1`
   color: violet;
 `;
 
+const Input = styled.input`
+  background-color: white;
+`;
+
+const Btn = styled.button`
+  background-color: greenyellow;
+  border: none;
+  border-radius: 50px; ;
+`;
+
 interface IForm {
   toDo: string;
 }
 
 function ToDoList() {
+  const [toDos, setToDos] = useRecoilState(toDoState);
   const {
     register,
     handleSubmit,
@@ -25,10 +48,14 @@ function ToDoList() {
     setValue,
     setError,
   } = useForm<IForm>();
-  const onSubmit = (data: IForm) => {
-    console.log(data.toDo);
+  const onSubmit = ({ toDo }: IForm) => {
+    setToDos((oldToDos) => [
+      ...oldToDos,
+      { text: toDo, id: Date.now(), category: "TO_DO" },
+    ]);
     setValue("toDo", "");
   };
+  console.log(toDos);
   return (
     <div>
       <TitleWrapper>
@@ -36,15 +63,19 @@ function ToDoList() {
       </TitleWrapper>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
+        <Input
           {...register("toDo", {
             required: "Please write a to do",
           })}
           placeholder='write a to do'
         />{" "}
-        <button>Add</button>
+        <Btn>+</Btn>
       </form>
-      <ul></ul>
+      <ul>
+        {toDos.map((toDo) => (
+          <li key={toDo.id}>{toDo.text}</li>
+        ))}
+      </ul>
     </div>
   );
 }
