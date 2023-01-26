@@ -1,4 +1,17 @@
 import { useForm } from "react-hook-form";
+import styled from "styled-components";
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 10px;
+  margin: 0px;
+`;
+const H1 = styled.h1`
+  color: violet;
+`;
 
 interface IForm {
   toDo: string;
@@ -18,6 +31,10 @@ function ToDoList() {
   };
   return (
     <div>
+      <TitleWrapper>
+        <H1>To Do List ✅</H1>
+      </TitleWrapper>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("toDo", {
@@ -27,6 +44,7 @@ function ToDoList() {
         />{" "}
         <button>Add</button>
       </form>
+      <ul></ul>
     </div>
   );
 }
