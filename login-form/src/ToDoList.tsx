@@ -24,17 +24,44 @@ import { useForm } from "react-hook-form";
 // }
 
 function ToDoList() {
-  const { register, watch } = useForm();
-  console.log(watch());
+  const { register, handleSubmit, formState } = useForm();
+  const onValid = (data: any) => {
+    console.log(data);
+  };
+  console.log(formState.errors);
   return (
     <div>
-      <form>
-        <input {...register("Email")} placeholder='Email' />
-        <input {...register("first Name")} placeholder='First Name' />
-        <input {...register("last Name")} placeholder='Last Name' />
-        <input {...register("username")} placeholder='Username' />
-        <input {...register("password")} placeholder='Password' />
-        <input {...register("password1")} placeholder='Password1' />
+      <form
+        style={{ display: "flex", flexDirection: "column" }}
+        onSubmit={handleSubmit(onValid)}
+      >
+        <input {...register("Email", { required: true })} placeholder='Email' />
+        <input
+          {...register("first Name", { required: true })}
+          placeholder='First Name'
+        />
+        <input
+          {...register("last Name", { required: true })}
+          placeholder='Last Name'
+        />
+        <input
+          {...register("username", { required: true, minLength: 10 })}
+          placeholder='Username'
+        />
+        <input
+          {...register("password", {
+            required: "password is required",
+            minLength: { value: 5, message: "too short" },
+          })}
+          placeholder='Password'
+        />
+        <input
+          {...register("password1", {
+            required: true,
+            minLength: { value: 5, message: "too short" },
+          })}
+          placeholder='Password1'
+        />
         <button>Add</button>
       </form>
     </div>
